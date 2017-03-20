@@ -1,3 +1,25 @@
+body {
+ font-family: Helvetica;
+ font-size: 1em;
+}
+
+button {
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#game-menu {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 408px;
+  padding: 10px;
+}
+
 #game-board {
   border: 1em solid black;
   margin: 0 auto;
@@ -7,7 +29,6 @@
 }
 
 .piece {
-  font-family: Helvetica;
   font-size: 2.5em;  
   color: gold;
   display: flex;

@@ -5,11 +5,8 @@ const app = {
   moves_count: 0,
   game_running: false,
   start_button: document.getElementById('btn-text'),
-  start_game: () => {
-    app.game_running = true
-    app.start_button.innerText = 'Restart Game'
-  },
   initGame: () => {
+    app.moves_count_span.innerText = 0
     app.board = app.initBoard()
     app.renderPieces()
   },
@@ -46,9 +43,9 @@ const app = {
   addEventListeners: () => {
     const num_pieces = document.querySelectorAll('.num-piece')
     num_pieces.forEach(piece => {
-      piece.addEventListener('click', app.onClick)
+      piece.addEventListener('click', app.pieceOnClick)
     })
-    app.start_button.addEventListener('click', app.startButtonHandler)
+    app.start_button.addEventListener('click', app.startButtonOnClick)
   },
   returnBlankIndex: (num_index) => {
     if (app.board[num_index-4] === 'blank') {
@@ -68,16 +65,20 @@ const app = {
     const num_index = app.board.indexOf(num)
     const blank_index = app.board.indexOf('blank')
     if (app.returnBlankIndex(num_index) === -1 ) {
-      window.alert('Must select number adjacent to blank piece')
       return
     }
     app.movePiece(num_index, blank_index)
   },
-  onClick: ({target}) => {
+  pieceOnClick: ({target}) => {
     app.isValidClick(target.innerText)
   },
-  startButtonHandler: () => {
-
+  startButtonOnClick: () => {
+    if (!app.game_running) {
+      app.game_running = true
+      app.start_button.innerText = 'Restart Game'
+    } else {
+      app.initGame()
+    }
   },
   updateCounter: () => {
     app.moves_count_span.innerHTML = ++app.moves_count

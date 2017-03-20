@@ -7,6 +7,7 @@ const app = {
   start_button: document.getElementById('btn-text'),
   initGame: () => {
     app.moves_count_span.innerText = 0
+    app.moves_count = 0
     app.board = app.initBoard()
     app.renderPieces()
   },
@@ -27,7 +28,7 @@ const app = {
     array[undefined_index] = 'blank'
     return array
   },
-  renderPieces: (cb) => {
+  renderPieces: () => {
     let html = ''
     app.board.map((piece, i)=> {
       const color = i % 2 === 0 ? 'red' : 'white'
@@ -38,7 +39,6 @@ const app = {
     })
     app.gameBoard.innerHTML = html
     app.addEventListeners()
-    if (cb) cb()
   },
   addEventListeners: () => {
     const num_pieces = document.querySelectorAll('.num-piece')
@@ -116,5 +116,7 @@ const app = {
     })
     app.renderPieces()
     setTimeout(() => { app.winDetection() }, 500 )
+    app.game_running = false
+    app.start_button.innerText = 'Start Game'
   }
 }

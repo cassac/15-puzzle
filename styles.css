@@ -10,22 +10,21 @@ button {
   padding: 5px;
 }
 
-#game-menu {
+.game {
   margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
+  width: 408px;
+}
+
+#game-menu {
   justify-content: space-between;
   align-items: flex-end;
-  width: 408px;
   padding: 10px;
 }
 
 #game-board {
   border: 1em solid black;
-  margin: 0 auto;
-  display: flex;
   flex-wrap: wrap;
-  width: 408px;
 }
 
 .piece {
